@@ -2,11 +2,14 @@ package javamqtt;
 
 import java.text.SimpleDateFormat;
 import maquinas.Eletrocardiografo;
+import maquinas.Estativa;
+import maquinas.Oximetro;
+import maquinas.VentiladorPulmonar;
 
 public class Main {
 
     public static void main(String[] args) throws InterruptedException {
-        Eletrocardiografo eletro = new Eletrocardiografo("eletro1");
+        VentiladorPulmonar ventilador = new VentiladorPulmonar("Estativa1");
         
         ClienteMQTT clienteMQTT = new ClienteMQTT("tcp://127.0.0.1", null, null);
         clienteMQTT.iniciar();
@@ -20,9 +23,9 @@ public class Main {
             clienteMQTT.publicar("teste", mensagem.getBytes(), 0);
         }*/
         
-        clienteMQTT.publicar("teste", eletro.ligar().getBytes(), 0);
-        clienteMQTT.publicar("teste", eletro.setSinalCardiaco(20).getBytes(), 0);
-        clienteMQTT.publicar("teste", eletro.mostrarDados().getBytes(), 0);
+        clienteMQTT.publicar("ventilador", ventilador.ligar().getBytes(), 0);
+        clienteMQTT.publicar("ventilador", ventilador.setModo(3).getBytes(), 0);
+        clienteMQTT.publicar("ventilador", ventilador.mostrarDados().getBytes(), 0);
         
         
         

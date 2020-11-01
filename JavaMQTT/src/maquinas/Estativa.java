@@ -8,7 +8,11 @@ public class Estativa extends Maquina{
 
     @Override
     public String mostrarDados() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if(ligado){
+            return "Situação: "+dados.get("ligado");
+        }else{
+            return "Estativa desligado";
+        }
     }
     
 }

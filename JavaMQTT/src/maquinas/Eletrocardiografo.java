@@ -10,7 +10,7 @@ public class Eletrocardiografo extends Maquina{
     }
 
     public String setSinalCardiaco(int sinal){
-        if(dados.get("ligado") == 1){
+        if(ligado){
             this.dados.put("sinalCardiaco", sinal);
             return "Batimentos alterados para: "+sinal;
         }
@@ -19,7 +19,7 @@ public class Eletrocardiografo extends Maquina{
     
     @Override
     public String mostrarDados() {
-        if(dados.get("ligado") == 1){
+        if(ligado){
             return "Situação: "+dados.get("ligado")+
                    "\nSinal cardiaco: "+dados.get("sinalCardiaco");
         }else{

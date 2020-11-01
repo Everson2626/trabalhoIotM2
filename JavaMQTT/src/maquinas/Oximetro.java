@@ -6,9 +6,22 @@ public class Oximetro extends Maquina{
         super(nome);
     }
 
+    public String setNivelOxigenio(int porcent){
+        if(ligado){
+            this.dados.put("nivelOxigenio", porcent);
+            return "Nivel de oxigenio alterados para: "+porcent;
+        }
+        return "Oximetro desligado";
+    }
+    
     @Override
     public String mostrarDados() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if(ligado){
+            return "Situação: "+dados.get("ligado")+
+                   "\nNivel oxigenio: "+dados.get("nivelOxigenio");
+        }else{
+            return "Oximetro desligado";
+        }
     }
     
 }
